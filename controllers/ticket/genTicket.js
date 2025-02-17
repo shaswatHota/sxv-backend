@@ -41,37 +41,40 @@ const genTicket = (req, res, next) => {
               to: user.email,
               subject: "Entry Pass",
               html: `<!DOCTYPE html>
-              <html lang="en">
-              
-              <head>
-                  <meta charset="UTF-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <title>Entry Pass</title>
-              </head>
-              
-              <body style="
-                                          width: 650px;margin: 30px 100px;">
-                  <div style="display: flex;
-                                              justify-content: center;
-                                              width: 100%;
-                                              height: 100%;">
-              
-                      <img src="https://res.cloudinary.com/dlm8mel1x/image/upload/v1739813189/sxv/hfm2yuqb9ojsjajsc6r2.png" alt="Logo" style="width: 500px;
-                                                      height: 250px;">
-              
-                      <div style="background:  #099396;height: 250px;min-width:250px;justify-content: center;">
-                          <div style="background: #F9EFD7;padding: 59px 0px;
-                                                      margin: 30px;
-                                              text-align: center;border-radius: 20px 0px;">
-                              <p style="font-size: 22px; color: #099396; margin: 0;">${user.username}</p>
-                              <p style="font-size: 16px; color: #099396; margin: 0;">${user.college}</p>
-                              <p style="font-size: 12px; font-weight: 600;color: #099396; margin: 0">${user._id}</p>
-                          </div>
-                      </div>
-                  </div>
-              </body>
-              
-              </html>`,
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Pass</title>
+</head>
+
+<body style="width: 650px; margin: 30px 100px;">
+    <div style="display: flex; justify-content: center; width: 100%; height: 100%; position: relative;">
+        
+        <!-- First Image -->
+        <img src="https://drive.google.com/thumbnail?id=1N5c3IzrbVWICLv0dkvTn_-UQQlJTcRdG&sz=s800" alt="Logo"
+            style="width: 500px; height: 250px;">
+
+        <!-- Second Image Container -->
+        <div style="position: relative; height: 250px; min-width: 100px; display: flex; justify-content: center; align-items: center;">
+            
+            <!-- Second Image -->
+            <img src="https://drive.google.com/thumbnail?id=1W8DHLtYSTtITgmva3aQi3si9NcgBOqvX&sz=s800" alt="Logo"
+                style="width: 100px; height: 250px;">
+
+            <!-- Rotated Text (Overlay on Image) -->
+            <div style="position: absolute; top: 53%; left: 50%; transform: translate(-65%, -65%) rotate(270deg); text-align: center;">
+                <p style="font-size: 22px; color: #ffffff; margin: 0; font-weight: bold;">${user.username}</p>
+                <p style="font-size: 16px; color: #ffffff; margin: 0;">${user.college}</p>
+                <p style="font-size: 12px; font-weight: 600; color: #ffffff; margin: 0">${user._id}</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>`,
             };
 
             await transporter.sendMail(mailOption).then(() => {
@@ -85,44 +88,47 @@ const genTicket = (req, res, next) => {
                 }
               );
             });
-          } 
+          }
           else if (user.paymentType === 3) {
             const mailOption = {
               from: process.env.EMAIL,
               to: user.email,
               subject: "Entry Pass",
               html: `<!DOCTYPE html>
-              <html lang="en">
-              
-              <head>
-                  <meta charset="UTF-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <title>Entry Pass</title>
-              </head>
-              
-              <body style="
-                                          width: 650px;margin: 30px 100px;">
-                  <div style="display: flex;
-                                              justify-content: center;
-                                              width: 100%;
-                                              height: 100%;">
-              
-                      <img src="https://res.cloudinary.com/dlm8mel1x/image/upload/v1739813189/sxv/hfm2yuqb9ojsjajsc6r2.png" alt="Logo" style="width: 500px;
-                                                      height: 250px;">
-              
-                      <div style="background:  #D15F5F;height: 250px;min-width:250px;justify-content: center;">
-                          <div style="background: #F9EFD7;padding: 59px 0px;
-                                                      margin: 30px;
-                                              text-align: center;border-radius: 20px 0px;">
-                              <p style="font-size: 22px; color: #D15F5F; margin: 0;">${user.username}</p>
-                              <p style="font-size: 16px; color: #D15F5F; margin: 0;">${user.college}</p>
-                              <p style="font-size: 12px; font-weight: 600;color: #D15F5F; margin: 0">${user._id}</p>
-                          </div>
-                      </div>
-                  </div>
-              </body>
-              
-              </html>`,
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Pass</title>
+</head>
+
+<body style="width: 650px; margin: 30px 100px;">
+    <div style="display: flex; justify-content: center; width: 100%; height: 100%; position: relative;">
+        
+        <!-- First Image -->
+        <img src="https://drive.google.com/thumbnail?id=1N5c3IzrbVWICLv0dkvTn_-UQQlJTcRdG&sz=s800" alt="Logo"
+            style="width: 500px; height: 250px;">
+
+        <!-- Second Image Container -->
+        <div style="position: relative; height: 250px; min-width: 100px; display: flex; justify-content: center; align-items: center;">
+            
+            <!-- Second Image -->
+            <img src="https://drive.google.com/thumbnail?id=1W8DHLtYSTtITgmva3aQi3si9NcgBOqvX&sz=s800" alt="Logo"
+                style="width: 100px; height: 250px;">
+
+            <!-- Rotated Text (Overlay on Image) -->
+            <div style="position: absolute; top: 53%; left: 50%; transform: translate(-65%, -65%) rotate(270deg); text-align: center;">
+                <p style="font-size: 22px; color: #ffffff; margin: 0; font-weight: bold;">${user.username}</p>
+                <p style="font-size: 16px; color: #ffffff; margin: 0;">${user.college}</p>
+                <p style="font-size: 12px; font-weight: 600; color: #ffffff; margin: 0">${user._id}</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>`,
             };
 
             await transporter.sendMail(mailOption).then(() => {
@@ -136,7 +142,7 @@ const genTicket = (req, res, next) => {
                 }
               );
             });
-          } 
+          }
 
           else if (user.paymentType === 1) {
             const mailOption = {
@@ -144,37 +150,40 @@ const genTicket = (req, res, next) => {
               to: user.email,
               subject: "Entry Pass",
               html: `<!DOCTYPE html>
-              <html lang="en">
-              
-              <head>
-                  <meta charset="UTF-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <title>Entry Pass</title>
-              </head>
-              
-              <body style="
-                                          width: 650px;margin: 30px 100px;">
-                  <div style="display: flex;
-                                              justify-content: center;
-                                              width: 100%;
-                                              height: 100%;">
-              
-                      <img src="https://res.cloudinary.com/dlm8mel1x/image/upload/v1739813189/sxv/hfm2yuqb9ojsjajsc6r2.png" alt="Logo" style="width: 500px;
-                                                      height: 250px;">
-              
-                      <div style="background:  #9B2227;height: 250px;min-width:250px;justify-content: center;">
-                          <div style="background: #F9EFD7;padding: 59px 0px;
-                                                      margin: 30px;
-                                              text-align: center;border-radius: 20px 0px;">
-                              <p style="font-size: 22px; color: #9B2227; margin: 0;">${user.username}</p>
-                              <p style="font-size: 16px; color: #9B2227; margin: 0;">${user.college}</p>
-                              <p style="font-size: 12px; font-weight: 600;color: #9B2227; margin: 0">${user._id}</p>
-                          </div>
-                      </div>
-                  </div>
-              </body>
-              
-              </html>`,
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Pass</title>
+</head>
+
+<body style="width: 650px; margin: 30px 100px;">
+    <div style="display: flex; justify-content: center; width: 100%; height: 100%; position: relative;">
+        
+        <!-- First Image -->
+        <img src="https://drive.google.com/thumbnail?id=1N5c3IzrbVWICLv0dkvTn_-UQQlJTcRdG&sz=s800" alt="Logo"
+            style="width: 500px; height: 250px;">
+
+        <!-- Second Image Container -->
+        <div style="position: relative; height: 250px; min-width: 100px; display: flex; justify-content: center; align-items: center;">
+            
+            <!-- Second Image -->
+            <img src="https://drive.google.com/thumbnail?id=1W8DHLtYSTtITgmva3aQi3si9NcgBOqvX&sz=s800" alt="Logo"
+                style="width: 100px; height: 250px;">
+
+            <!-- Rotated Text (Overlay on Image) -->
+            <div style="position: absolute; top: 53%; left: 50%; transform: translate(-65%, -65%) rotate(270deg); text-align: center;">
+                <p style="font-size: 22px; color: #ffffff; margin: 0; font-weight: bold;">${user.username}</p>
+                <p style="font-size: 16px; color: #ffffff; margin: 0;">${user.college}</p>
+                <p style="font-size: 12px; font-weight: 600; color: #ffffff; margin: 0">${user._id}</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>`,
             };
 
             await transporter.sendMail(mailOption).then(() => {
