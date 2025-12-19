@@ -61,7 +61,7 @@ if (process.env.MONGODB_URI) {
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) => console.log(err));
 } else {
-  console.warn("⚠️ MongoDB not connected (review mode)");
+  console.warn(" MongoDB not connected (review mode)");
 }
 
 module.exports = app;
