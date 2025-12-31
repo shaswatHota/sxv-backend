@@ -13,7 +13,7 @@ app.use(cors({
     'https://dev.festvssut.in', 
     'https://fest-admin-panel.vercel.app',
     'https://sxv-frontend-jade.vercel.app',
-    'https://sxv-website.vercel.app/'
+    'https://sxv-website.vercel.app'
     
   ],
   credentials: true,
