@@ -34,7 +34,7 @@ const login = async (req, res) => {
 if (!match) {
   return res.status(401).json({
     success: false,
-    message: "Incorrect password",
+    message: "Incorrect password ",
   });
 }
 
