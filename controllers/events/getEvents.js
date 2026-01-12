@@ -2,11 +2,26 @@ const User = require("../../models/user");
 const Event = require("../../models/events");
 
 const getEvents = async (req, res, next) => {
-    Event.find().then(async (events) => {
-        res.json({ message: "Events are ready!", events });
+     try {
+        const events = await Event.find()
+        if (!events || events.length === 0) {
+            return res.status(404).json({
+                message: 'No events found in the database.',
+                events: [],
+            })
+        }
 
-    }).catch((err) => {
-        res.json({ message: "Events fetching error" });
+        res.status(200).json({
+        message: 'Events fetched successfully!',
+        events,
     })
+  } catch (err) {
+    console.error('Error fetching events:', err)
+    res.status(500).json({
+      message: 'Server Error while fetching events',
+      error: err.message,
+    })
+  }
+
 }
 module.exports = getEvents;
