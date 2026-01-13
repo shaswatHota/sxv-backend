@@ -4,27 +4,35 @@ const bcrypt = require("bcrypt");
 
 const signUp = async (req, res) => {
   try {
-    console.log("SIGNUP BODY:", req.body);
+    
 
     const {
       name,           // from frontend
       email,
       password,
       phone,
-      institution,    
+      regdNo,
       gradYear,
       branch,
     } = req.body;
 
 
-    if (!name || !email || !password || !phone || !institution || !gradYear || !branch) {
+    if (!name || !email || !password || !phone || !regdNo || !gradYear || !branch) {
       return res.status(400).json({
         success: false,
         message: "Missing required fields",
       });
     }
 
-    //  Prevent duplicate users
+    // Validate registration number format
+    if (!/^\d{10}$/.test(regdNo)) {
+      return res.status(400).json({
+        success: false,
+        message: "Registration number must be exactly 10 digits",
+      });
+    }
+
+    //  Prevent duplicate users by email
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({
@@ -33,22 +41,32 @@ const signUp = async (req, res) => {
       });
     }
 
+    //  Prevent duplicate registration numbers
+    const existingRegdNo = await User.findOne({ regdNo });
+    if (existingRegdNo) {
+      return res.status(409).json({
+        success: false,
+        message: "Registration number already exists",
+      });
+    }
+
     //  Hash password
     const hash = await bcrypt.hash(password, 10);
 
-    const isVssutian = institution === "vssut";
-    const college = isVssutian ? "VSSUT" : "Non-VSSUT";
+    // Default all users as VSSUT students
+    const isVssutian = true;
+    const college = "VSSUT";
 
     const user = await User.create({
       username: name,
       email,
       password: hash,
       phone,
+      regdNo,
       branch,
       graduationYear: gradYear,
       isVssutian,
       college,
-      regdNo: null,          // optional / future
       events: [],
       paymentStatus: isVssutian,
       paymentType: 0,
@@ -60,6 +78,7 @@ const signUp = async (req, res) => {
         email: user.email,
         username: user.username,
         isVssutian: user.isVssutian,
+        regdNo: user.regdNo,
         college: user.college,
         graduationYear: user.graduationYear,
         branch: user.branch,
